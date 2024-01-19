@@ -11,6 +11,7 @@ function App() {
   
     ]);
     const [titleu, setTitleu] = useState('');
+    const [colouru, setColouru] = useState('#AFF4C6');
     const [display,setdisplay]=useState("block");
     const [descriptionu, setDescriptionu] = useState('');
     const[searchelement,setSearchelement] =useState('');
@@ -18,14 +19,16 @@ function App() {
   
     function clickhandle() {
       if(notes.length===0){
-        setnotes([{ title: titleu, description: descriptionu }]);
+        setnotes([{ title: titleu, description: descriptionu  ,colour:colouru}]);
         setTitleu('');
         setDescriptionu('');
+        setColouru('#AFF4C6');
       }
       else{
-        setnotes([...notes, { title: titleu, description: descriptionu }]);
+        setnotes([...notes, { title: titleu, description: descriptionu ,colour:colouru}]);
         setTitleu('');
         setDescriptionu('');
+        setColouru('#AFF4C6');
       }
     }
   
@@ -52,6 +55,11 @@ function App() {
         setdisplay("none");
       }
     }
+
+    function handlecolour(value){
+      setColouru(value);
+    }
+
   
     return (
       <>
@@ -61,14 +69,14 @@ function App() {
       <div className='notelist'>
       {notes.map((value,index) => (
         (searchelement2 === "" || value.title === searchelement2) && (
-            <Notes  title={value.title} description={value.description} />
+            <Notes  title={value.title} description={value.description} colour={value.colour} />
         )
     ))}
       
      
-        <div className='inputnote' style={{display:display}}>
+        <div className='inputnote' style={{display:display ,backgroundColor:colouru}}>
            <div className='titlee'> 
-            <input type='text' placeholder='Title'onChange={inputevent} value={titleu}/>
+            <input type='text' placeholder='Title' onChange={inputevent} value={titleu}/>
             </div>
           <div className='descriptione'>
             <textarea
@@ -79,8 +87,19 @@ function App() {
           </div>
   
           <div className='addbutton'>
-          <button onClick={clickhandle}>Add</button>
+          
+          <div className='colourbutton'> colour
+                  <div className='dropdowncontent'>
+                     <label><input type='radio' name='color' onChange={() => handlecolour("#FFBDF2")}/><div className='divbox'  style={{backgroundColor:"#FFBDF2"}}></div></label>
+                       <label><input type='radio' name='color' onChange={() => handlecolour("#A0C4FF")} /><div className='divbox' style={{backgroundColor:"#A0C4FF"}}></div></label>
+                       <label><input type='radio' name='color' onChange={() => handlecolour("#D0F4DE")} /><div className='divbox'  style={{backgroundColor:"#D0F4DE"}}></div></label>
+                       <label><input type='radio' name='color' onChange={() => handlecolour("#FFD700")} /><div className='divbox' style={{backgroundColor:"#FFD700"}}></div></label>
+                       <label><input type='radio' name='color' onChange={() => handlecolour("#FF7F50")} /><div className='divbox' style={{backgroundColor:"#FF7F50"}}></div></label>    
+
           </div>
+            </div>
+            <button onClick={clickhandle}>Add</button>
+            </div>
         </div>
         </div>
       </>

@@ -25,6 +25,7 @@
 
  .searchbar input{
     border-radius: 15px;
+    border: 2px solid black;
     width:70%;
     height: 30px;
     text-align: center;
@@ -44,7 +45,7 @@
     margin-bottom: 20px;
     width: 300px;
     height: 250px;
-    background-color:#AFF4C6;
+    background-color:;
   border-radius: 15px;
 }
 
@@ -92,17 +93,42 @@
 } 
  .addbutton{
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-evenly;
     width: 99%;
     height: 10%;
  }
- .addbutton button{
-    margin-top: -2px;
-    margin-right: 3px;
-    border: none;
-    color: aliceblue;
-    width: 35px;
-    height: 25px;
-    border-radius: 5px;
-    background-color: orange;
+
+ .colourbutton{
+   width:50px;
+   height: 25px;
+   border-radius: 5px;
+   background-color: orange;
+   color: aliceblue;
+   text-align: center;
  }
+ .dropdowncontent{
+   display: none;
+}
+.dropdowncontent label{
+ display:flex;
+ margin-top: 2px;
+ 
+}
+ .colourbutton:hover .dropdowncontent{
+   display: block;
+ }
+
+ .addbutton button{
+   border: none;
+   color: aliceblue;
+   width: 35px;
+   height: 25px;
+   border-radius: 5px;
+   background-color: orange;
+}
+
+.divbox{
+   width: 25px;
+   height: 20px;
+   border-radius: 5px;
+}
